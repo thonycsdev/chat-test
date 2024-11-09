@@ -13,10 +13,10 @@ app.prepare().then(() => {
   const httpServer = createServer(handler);
   const io = new Server(httpServer);
   io.on("connection", (socket) => {
-    io.emit("connection", "New user connected" + socket.id);
+    io.emit("connection", "New user connected: " + socket.id);
 
     socket.on("chat", (data) => {
-      io.emit("chat", `${socket.id}: ${data}`);
+      io.emit("chat", `${"user"}: ${data}`);
     });
   });
 
