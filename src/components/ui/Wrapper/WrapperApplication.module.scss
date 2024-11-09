@@ -1,0 +1,41 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 7fr 1fr;
+	align-items: center;
+	justify-items: center;
+	max-height: 100vh;
+	min-width: 90vw;
+	overflow: hidden;
+	padding: 1em;
+	border-radius: 5px;
+}
+
+.wrapper_buttons {
+	display: flex;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+	width: 70%;
+}
+
+.wrapper_messages {
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	align-items: flex-start;
+	overflow-x: hidden;
+	height: 100%;
+	width: 90%;
+	border: 3px #f2f2f2 solid;
+	border-radius: 5px;
+	padding: 1em;
+	padding-left: 2em;
+}

@@ -1,7 +1,15 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { socket } from "../../socket";
+import { Button } from "@/components/ui/Button";
+import Input from "@/components/ui/Input/Input";
+import Title from "@/components/ui/Title/Title";
+import WrapperApplication, {
+  WrapperButtons,
+  WrapperMessages,
+} from "@/components/ui/Wrapper/WrapperApplication";
+import Message from "@/components/ui/Messages/Message";
 export default function Home() {
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<string[]>(["Anthony", "Palloma"]);
   const [message, setMessage] = useState<string>("");
   useEffect(() => {
     socket.on("connection", (id: string) => {
@@ -24,15 +32,17 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <h1>Home</h1>
-      <ul>
+    <WrapperApplication>
+      <Title />
+      <WrapperMessages>
         {messages.map((msg, idx) => (
-          <li key={idx}>{msg}</li>
+          <Message key={idx}>{msg}</Message>
         ))}
-      </ul>
-      <input type="text" onChange={handleOnChange} />
-      <button onClick={sendMessage}>Send message</button>
-    </div>
+      </WrapperMessages>
+      <WrapperButtons>
+        <Input onChange={handleOnChange} />
+        <Button onClick={sendMessage}>Send message</Button>
+      </WrapperButtons>
+    </WrapperApplication>
   );
 }
